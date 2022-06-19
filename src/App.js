@@ -22,14 +22,14 @@ const[showLoading,setShowLoading]=useState(false)
 
   const[isLoading,setIsLoading] = useState(true)
   
-  const[error,setError] = useState(null)
+ 
 
   useEffect(() => {
     fetchProducts();
   }, []);
 
   const fetchProducts = () => {
-    const res = axios
+     axios
       .get("/products")
       .then((res) => {
         setProducts(res.data);
@@ -37,10 +37,8 @@ const[showLoading,setShowLoading]=useState(false)
         setIsLoading(false)
         setShowLoading(false) 
     })
-    .catch(err=>{ 
-        setError(err)
-        setIsLoading(false)
-    })
+    
+    
   };
   const fetchProductByCategory = (category) => {
     if (category === "all") {
