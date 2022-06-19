@@ -3,11 +3,11 @@ import LoadingScreen from '../components/LoadingScreen';
 
 import Item from "../components/Item";
 
-const Home = ({ items, fetchProductByCategory,showLoading}) => {
+const Home = ({ items, fetchProductByCategory,isLoading}) => {
   return (
     <nav class="bg-white px-2 sm:px-52 py-2.5 rounded ">
       <div class="container flex flex-wrap justify-between items-center mx-auto">
-      <LoadingScreen  showLoading={showLoading}/>
+      
         <a href="#" class="flex items-center">
           <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
             NEW PRODUCT
@@ -56,7 +56,7 @@ const Home = ({ items, fetchProductByCategory,showLoading}) => {
             (item) =>  (<Item key={item.id} item={item} />)
           )}
       </div>
-      
+      <LoadingScreen  showLoading={isLoading}/>
     </nav>
   );
 };
