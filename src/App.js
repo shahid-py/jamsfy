@@ -12,8 +12,17 @@ import Home from "./Categories/Home";
 
 
 const App = () => {
+
+
+  //loader
+const[showLoading,setShowLoading]=useState(false)
+
   const [items, setProducts] = useState([]);
   const [backup, setBackUp] = useState([]);
+
+  const[isLoading,setIsLoading] = useState(true)
+  
+  const[error,setError] = useState(null)
 
   useEffect(() => {
     fetchProducts();
@@ -25,8 +34,13 @@ const App = () => {
       .then((res) => {
         setProducts(res.data);
         setBackUp(res.data);
-      })
-      .catch((err) => {});
+        setIsLoading(false)
+        setShowLoading(false) 
+    })
+    .catch(err=>{ 
+        setError(err)
+        setIsLoading(false)
+    })
   };
   const fetchProductByCategory = (category) => {
     if (category === "all") {
@@ -47,8 +61,10 @@ const App = () => {
           element={
             <Home
               items={items}
+              isLoading={isLoading} 
               fetchProductByCategory={fetchProductByCategory}
               fetchProducts={fetchProducts}
+              showLoading={showLoading} 
             />
           }
         ></Route>
