@@ -44,8 +44,8 @@ const Home = ({ items, fetchProductByCategory,isLoading}) => {
       </div>
 
       <div className="w-full bg-slate-50 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-8 place-items-center px-4 py-3 mt-8 relative z-[5]">
-        {fetchProductByCategory &&
-          fetchProductByCategory.map(
+        {items &&
+          items.map(
             (item) =>  (<Item key={item.id} item={item} />)
           )}
       </div>
